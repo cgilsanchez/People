@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recetas",
+  "info": {
+    "singularName": "receta",
+    "pluralName": "recetas",
+    "displayName": "Receta",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "ingredients": {
+      "type": "text"
+    },
+    "descriptions": {
+      "type": "text"
+    }
+  }
+}
