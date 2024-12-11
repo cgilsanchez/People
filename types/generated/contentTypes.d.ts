@@ -362,41 +362,29 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiPersonPerson extends Schema.CollectionType {
-  collectionName: 'people';
+export interface ApiChefChef extends Schema.CollectionType {
+  collectionName: 'chefs';
   info: {
-    singularName: 'person';
-    pluralName: 'people';
-    displayName: 'Usuarios';
-    description: '';
+    singularName: 'chef';
+    pluralName: 'chefs';
+    displayName: 'Chef';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
-    surname: Attribute.String;
-    user: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'plugin::users-permissions.user'
+    recetas: Attribute.Relation<
+      'api::chef.chef',
+      'oneToMany',
+      'api::receta.receta'
     >;
-    email: Attribute.Email;
-    password: Attribute.Password;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::chef.chef', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::chef.chef', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -416,6 +404,11 @@ export interface ApiRecetaReceta extends Schema.CollectionType {
     name: Attribute.String;
     ingredients: Attribute.Text;
     descriptions: Attribute.Text;
+    chef: Attribute.Relation<
+      'api::receta.receta',
+      'manyToOne',
+      'api::chef.chef'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -732,11 +725,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    person: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::person.person'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -764,7 +752,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::person.person': ApiPersonPerson;
+      'api::chef.chef': ApiChefChef;
       'api::receta.receta': ApiRecetaReceta;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

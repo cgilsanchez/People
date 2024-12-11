@@ -20,6 +20,12 @@
     },
     "descriptions": {
       "type": "text"
+    },
+    "chef": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chef.chef",
+      "inversedBy": "recetas"
     }
   }
 }
