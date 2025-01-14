@@ -409,6 +409,7 @@ export interface ApiRecetaReceta extends Schema.CollectionType {
       'manyToOne',
       'api::chef.chef'
     >;
+    image: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
