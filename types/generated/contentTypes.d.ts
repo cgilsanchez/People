@@ -410,7 +410,7 @@ export interface ApiRecetaReceta extends Schema.CollectionType {
       'api::chef.chef'
     >;
     image: Attribute.Media & Attribute.Required;
-    isFavorite: Attribute.Boolean;
+    isFavorite: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
