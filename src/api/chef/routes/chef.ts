@@ -1,11 +1,7 @@
-    export default {
-        routes: [
-        {
-            method: 'PUT',
-            path: '/chefs/:id',
-            handler: 'chef.update',
-            config: { auth: false }, // Desactiva autenticación temporalmente
-        }
-        ],
-    };
-    
+/**
+ * chef router
+ */
+
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreRouter('api::chef.chef');
