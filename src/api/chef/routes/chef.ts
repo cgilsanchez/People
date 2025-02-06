@@ -4,11 +4,7 @@
             method: 'PUT',
             path: '/chefs/:id',
             handler: 'chef.update',
-            config: {
-            auth: {
-                scope: ['authenticated'] // Asegura que los usuarios autenticados pueden acceder
-            },
-            },
+            config: { auth: false }, // Desactiva autenticación temporalmente
         }
         ],
     };
